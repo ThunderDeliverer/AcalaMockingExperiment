@@ -15,6 +15,7 @@ module.exports = {
   networks: {
     hardhat: {
       forking: {
+        // Hardhat requires for forking endpoint to be reachable using HTTPS, so forking local dev network is not an option
         // url: "https://acala-mandala-adapter.api.onfinality.io/public"
         url: "https://tc7-eth.aca-dev.network"
       }

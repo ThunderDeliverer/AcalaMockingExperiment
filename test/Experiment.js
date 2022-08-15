@@ -25,17 +25,21 @@ describe("Experiment", function () {
       const originalAddress = instance.address;
       console.log(originalAddress);
 
+      // This prepares the value to be returned by a mocked call
       const fakeName = "Fake Acala";
       console.log(fakeName);
 
+      // This instantiates a mocked smart contract from an already instantiated one at a specified address
       const myFake = await smock.fake(instance, { address: ACA });
       console.log(myFake.address);
 
       myFake.name.returns(fakeName);
 
+      // This showcases that calling an instatiated smart contract that is being overwritten by mocked one, returns the mocked value
       const mockedName = await instance.name();
       console.log(mockedName);
 
+      // Check that the chain was forked from a recent state
       const bln = await ethers.provider.getBlockNumber();
       console.log(bln);
     });
